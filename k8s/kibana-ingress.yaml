@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana
+  namespace: efk
+  annotations:
+    nginx.ingress.kubernetes.io/whitelist-source-range: some.white.list.ip
+spec:
+  rules:
+  - host: kibana.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: kibana
+          servicePort: 5601
